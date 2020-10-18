@@ -57,6 +57,8 @@ Caso a sonda não seja encontrada, retorna 404:
 }
 ```
 
+Cria uma sonda e retorna as informações da sonda criada. 
+
 |Parâmetro | Descrição     |
 |----------|---------------|
 |`probeX`|Posição inicial da sonda no eixo X.|
@@ -65,7 +67,7 @@ Caso a sonda não seja encontrada, retorna 404:
 |`limitY`|Limite máximo do eixo Y.|
 |`facingDirection`|Direção inicial da sonda.|
 
-Cria uma sonda e retorna as informações da sonda criada. 
+Em caso de sucesso:
 
 `200 OK`
 ```json
@@ -92,8 +94,17 @@ Cria uma sonda e retorna as informações da sonda criada.
     "commands": "MMRMMRMRRM"
 }
 ```
+|Parâmetro | Descrição     |
+|----------|---------------|
+|`commands`|Comandos a serem executados pela sonda.|
 
-Caso a sonda não seja encontrada, retorna 404:
+|Comando | Descrição     |
+|----------|---------------|
+|`L`| Gira 90 graus para a esquerda. |
+|`R`| Gira 90 graus para a direita. |
+|`M`| Move para a frente uma unidade. |
+
+Caso a sonda desejada não seja encontrada, retorna 404:
 
 `404 Not Found`
 ```json
