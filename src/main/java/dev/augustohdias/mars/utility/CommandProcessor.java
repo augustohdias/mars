@@ -53,7 +53,7 @@ public class CommandProcessor implements BiFunction<List<Command>, Probe, Positi
           currentCoordinate = movementProcessor.apply(currentDirection.value(), currentCoordinate);
           break;
       }
-      if (!currentCoordinate.isValid() || !currentCoordinate.inBounds(probe.getBoundaries())) {
+      if (!currentCoordinate.checkIfItsValid() || !currentCoordinate.inBounds(probe.getBoundaries())) {
         throw new IndexOutOfBoundsException();
       }
     }

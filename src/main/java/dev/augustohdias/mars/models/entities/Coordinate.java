@@ -14,7 +14,7 @@ public class Coordinate {
   private Integer x;
   private Integer y;
 
-  public boolean isValid() {
+  public boolean checkIfItsValid() {
     return x > 0 && y > 0;
   }
 
