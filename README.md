@@ -9,6 +9,28 @@ Este projeto simula a navegação de uma sonda em Marte. A sonda é controlada v
 - Mover uma sonda
 - Listar todas as sondas criadas
 
+## Instalação
+
+Clone o repositório e entre no diretório:
+
+```
+git clone https://github.com/augustohdias/mars
+cd mars
+```
+
+Compile usando o maven:
+```
+mvn clean install
+```
+
+Execute o jar gerado na pasta target:
+```
+java -jar ./target/mars-0.0.1-SNAPSHOT.jar
+```
+
+A aplicação será executada por padrão na porta `8080`.
+
+
 ## Descrição da API
 
 ### Recupera informações de todas as sondas
