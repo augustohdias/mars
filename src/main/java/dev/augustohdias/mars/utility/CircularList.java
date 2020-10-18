@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.Accessors;
 
 public class CircularList<T> {
-  @Getter private Node<T> head;
+  private Node<T> head;
 
   @Getter private int size = 0;
 

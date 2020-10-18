@@ -6,7 +6,6 @@ import dev.augustohdias.mars.models.entities.Direction;
 import dev.augustohdias.mars.models.entities.Position;
 import dev.augustohdias.mars.utility.CircularList.Node;
 import java.util.List;
-import java.util.Optional;
 import java.util.function.BiFunction;
 
 /**
@@ -37,12 +36,8 @@ public class CommandProcessor implements BiFunction<List<Command>, Position, Pos
    */
   @Override
   public Position apply(List<Command> commands, Position position) {
-    Optional<Node<Direction>> maybeDirection =
-        directions.findAndGetReference(position.getFacingDirection());
-    if (maybeDirection.isEmpty()) {
-      return null;
-    }
-    Node<Direction> currentDirection = maybeDirection.get();
+    Node<Direction> currentDirection =
+        directions.findAndGetReference(position.getFacingDirection()).get();
     Coordinate currentCoordinate = position.getCoordinate();
     for (Command command : commands) {
       switch (command) {
