@@ -5,17 +5,25 @@ import java.util.Optional;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+/** Enum representation of {@link Probe}'s supported directions. */
 @AllArgsConstructor
 public enum Direction {
-  North("N"),
-  East("E"),
-  South("S"),
-  West("W");
+  NORTH('N'),
+  EAST('E'),
+  SOUTH('S'),
+  WEST('W');
 
-  @Getter
-  private final String value;
+  @Getter private final Character value;
 
-  public static Optional<Direction> get(String directionString) {
-    return Arrays.stream(Direction.values()).filter(direction -> direction.value.equals(directionString)).findAny();
+  /**
+   * Maybe provides a direction.
+   *
+   * @param directionString Desired direction value.
+   * @return A direction, if exists. Empty otherwise.
+   */
+  public static Optional<Direction> get(Character directionString) {
+    return Arrays.stream(Direction.values())
+        .filter(direction -> direction.value.equals(directionString))
+        .findAny();
   }
 }

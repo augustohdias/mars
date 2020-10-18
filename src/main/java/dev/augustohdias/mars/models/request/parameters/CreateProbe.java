@@ -5,6 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
+/**
+ * Probe parameters POJO.
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -12,5 +15,5 @@ import lombok.experimental.Accessors;
 public class CreateProbe {
   Integer x;
   Integer y;
-  String facingDirection;
+  Character facingDirection;
 }

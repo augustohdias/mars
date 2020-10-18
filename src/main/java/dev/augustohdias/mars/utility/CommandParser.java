@@ -8,6 +8,16 @@ import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public class CommandParser {
+
+  /**
+   * Parse a command string to a {@link Command} list.
+   *
+   * Command string example:
+   * "RRMMMRLMRMLMRMLLLMRM"
+   *
+   * @param commands A String with commands.
+   * @return A list of commands.
+   */
   public List<Command> parseCommands(String commands) {
     return commands
         .toUpperCase()

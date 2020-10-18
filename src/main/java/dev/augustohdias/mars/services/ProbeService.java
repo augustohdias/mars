@@ -1,6 +1,5 @@
 package dev.augustohdias.mars.services;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.augustohdias.mars.models.entities.Command;
 import dev.augustohdias.mars.models.entities.Coordinate;
 import dev.augustohdias.mars.models.entities.Direction;
@@ -18,31 +17,63 @@ import org.springframework.web.server.ResponseStatusException;
 @Service
 public class ProbeService {
 
+  /**
+   * Create a new probe.
+   *
+   * @param parameters Parameters for a new probe instance.
+   * @return Created probe data.
+   */
   public Probe createProbe(CreateProbe parameters) {
-    Direction direction = Direction.get(parameters.getFacingDirection())
-        .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid direction."));
+    Direction direction =
+        Direction.get(parameters.getFacingDirection())
+            .orElseThrow(
+                () -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid direction."));
     Coordinate coordinate = new Coordinate(parameters.getX(), parameters.getY());
     return ProbePool.newProbe(new Position(coordinate, direction));
   }
 
+  /**
+   * List all created probes.
+   *
+   * @return Return created probes from {@link ProbePool}.
+   */
   public List<Probe> listProbes() {
     return ProbePool.getProbes();
   }
 
+  /**
+   * See {@link ProbeService#findProbe}.
+   *
+   * @param id Desired probe's id.
+   * @return Probe information.
+   */
   public Probe getProbeById(Integer id) {
     return findProbe(id);
   }
 
+  /**
+   * Move probe using the provided parameters.
+   *
+   * @param id Probe that will run the commands.
+   * @param parameters Probe movement parameters.
+   * @return Probe's state after the command execution.
+   */
   public Probe moveProbe(Integer id, MoveProbe parameters) {
     Probe probe = findProbe(id);
     List<Command> commands = CommandParser.parseCommands(parameters.getCommands());
     return probe.applyCommands(commands);
   }
-
+  /**
+   * Search for a probe using the id parameter.
+   * Returns the requested probe, if exists.
+   * Throws an exception otherwise.
+   *
+   * @throws ResponseStatusException If the requested probe is not found, returns 404.
+   * @param id Desired probe's id.
+   * @return Probe information.
+   */
   private Probe findProbe(Integer id) {
-    return ProbePool
-        .getProbes()
-        .stream()
+    return ProbePool.getProbes().stream()
         .filter(probe -> probe.getId().equals(id))
         .findAny()
         .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Probe not found."));

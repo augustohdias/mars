@@ -5,6 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
+/**
+ * Cartesian coordinate POJO.
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

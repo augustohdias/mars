@@ -12,20 +12,27 @@ public class CircularList<T> {
   private Node<T> head;
   private int size = 0;
 
+  /**
+   * A node holding it's neighbors references.
+   *
+   * @param <T> Node data type.
+   */
   @RequiredArgsConstructor
   @Accessors(fluent = true, chain = true)
   static class Node<T> {
-    @NonNull
-    @Getter
-    private T value;
+    @NonNull @Getter private T value;
 
-    @Getter
-    private Node<T> next;
+    @Getter private Node<T> next;
 
-    @Getter
-    private Node<T> prev;
+    @Getter private Node<T> prev;
   }
 
+  /**
+   * Search for an element and returns a reference to it.
+   *
+   * @param element Element value to look for.
+   * @return Element's node reference if it succeeds, null otherwise.
+   */
   public Optional<Node<T>> findAndGetReference(T element) {
     Node<T> currentPosition = this.head;
     int counter = 0;
@@ -33,9 +40,15 @@ public class CircularList<T> {
       currentPosition = currentPosition.next();
       counter += 1;
     }
-    return currentPosition.value == element? Optional.of(currentPosition) : Optional.empty();
+    return currentPosition.value == element ? Optional.of(currentPosition) : Optional.empty();
   }
 
+  /**
+   * Get element at index.
+   *
+   * @param index Element index.
+   * @return Reference to element.
+   */
   public Node<T> get(int index) {
     while (index < 0) index += this.size;
 
@@ -46,6 +59,12 @@ public class CircularList<T> {
     return temp;
   }
 
+  /**
+   * Adds a new node.
+   * @param data Node data.
+   *
+   * @return Self reference.
+   */
   public CircularList<T> push(T data) {
     this.size += 1;
     if (head == null) {
