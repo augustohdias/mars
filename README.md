@@ -5,8 +5,8 @@
 Este projeto simula a navegação de uma sonda em Marte. A sonda é controlada via uma API REST que permite:
 
 - Criar uma nova sonda
-- Ver informações sobre a sonda
-- Mover a sonda
+- Ver informações sobre uma sonda
+- Mover uma sonda
 - Listar todas as sondas criadas
 
 ## Descrição da API
