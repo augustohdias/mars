@@ -39,10 +39,11 @@ class CircularListTest {
     for (int i = 0; i < list.getSize(); i++) {
       negativeIndex--;
       int positiveIndex = list.getSize() + negativeIndex;
-      Assertions.assertEquals(list.get(negativeIndex), list.get(positiveIndex));
-
       int bigNegativeIndex = list.getSize() * -10 + negativeIndex;
+
+      Assertions.assertEquals(list.get(negativeIndex), list.get(positiveIndex));
       Assertions.assertEquals(list.get(bigNegativeIndex), list.get(negativeIndex));
+      Assertions.assertEquals(list.get(bigNegativeIndex), list.get(positiveIndex));
     }
   }
 
