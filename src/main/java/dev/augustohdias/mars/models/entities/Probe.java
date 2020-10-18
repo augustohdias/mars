@@ -27,7 +27,7 @@ public class Probe {
    * @return Returns a self reference.
    */
   public Probe applyCommands(List<Command> commands) {
-    this.position = commandProcessor.apply(commands, position);
+    this.position = commandProcessor.apply(commands, this);
     return this;
   }
 }
