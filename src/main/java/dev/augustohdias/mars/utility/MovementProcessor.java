@@ -7,9 +7,9 @@ import java.util.Map;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-/** A {@link BiFunction} to process movement commands.
- * Each direction defined at {@link Direction} should have an correspondent function inside
- * {@link MovementProcessor#movementStrategy}.
+/**
+ * A {@link BiFunction} to process movement commands. Each direction defined at {@link Direction}
+ * should have an correspondent function inside {@link MovementProcessor#movementStrategy}.
  */
 public class MovementProcessor implements BiFunction<Direction, Coordinate, Coordinate> {
   private static final Map<Direction, Function<Coordinate, Coordinate>> movementStrategy =

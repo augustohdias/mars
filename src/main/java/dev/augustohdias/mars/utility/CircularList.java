@@ -1,16 +1,15 @@
 package dev.augustohdias.mars.utility;
 
 import java.util.Optional;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.Accessors;
 
-@Data
 public class CircularList<T> {
-  private Node<T> head;
-  private int size = 0;
+  @Getter private Node<T> head;
+
+  @Getter private int size = 0;
 
   /**
    * A node holding it's neighbors references.
@@ -52,17 +51,17 @@ public class CircularList<T> {
   public Node<T> get(int index) {
     while (index < 0) index += this.size;
 
-    Node<T> temp = null;
+    Node<T> temp = this.head;
     for (int i = 0; i < index; i++) {
-      temp = this.head.next;
+      temp = temp.next;
     }
     return temp;
   }
 
   /**
    * Adds a new node.
-   * @param data Node data.
    *
+   * @param data Node data.
    * @return Self reference.
    */
   public CircularList<T> push(T data) {

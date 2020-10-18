@@ -9,20 +9,17 @@ import lombok.experimental.Accessors;
 /**
  * Enum representation of possible {@link Probe} commands.
  *
- * Left: Turn {@link Probe} 90 degrees to the left;
- * Right: Turn {@link Probe} 90 degrees to the right;
- * Move: Move {@link Probe} ahead 1 distance unit.
+ * <p>Left: Turn {@link Probe} 90 degrees to the left; Right: Turn {@link Probe} 90 degrees to the
+ * right; Move: Move {@link Probe} ahead 1 distance unit.
  */
 @AllArgsConstructor
 @Accessors(fluent = true)
 public enum Command {
-
   LEFT('L'),
   MOVE('M'),
   RIGHT('R');
 
-  @Getter
-  private final Character value;
+  @Getter private final Character value;
 
   /**
    * Maybe provides a Command.

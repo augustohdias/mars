@@ -12,8 +12,7 @@ public class CommandParser {
   /**
    * Parse a command string to a {@link Command} list.
    *
-   * Command string example:
-   * "RRMMMRLMRMLMRMLLLMRM"
+   * <p>Command string example: "RRMMMRLMRMLMRMLLLMRM"
    *
    * @param commands A String with commands.
    * @return A list of commands.

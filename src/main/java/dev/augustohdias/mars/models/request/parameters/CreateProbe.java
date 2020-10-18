@@ -5,15 +5,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
-/**
- * Probe parameters POJO.
- */
+/** Probe parameters POJO. */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
 public class CreateProbe {
-  Integer x;
-  Integer y;
+  Integer probeX;
+  Integer probeY;
+
+  Integer limitX;
+  Integer limitY;
+
   Character facingDirection;
 }

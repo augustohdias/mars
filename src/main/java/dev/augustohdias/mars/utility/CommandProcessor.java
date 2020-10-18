@@ -10,8 +10,8 @@ import java.util.Optional;
 import java.util.function.BiFunction;
 
 /**
- * Processes a command list and applies it to a position.
- * See {@link Command} and {@link Direction} for more information.
+ * Processes a command list and applies it to a position. See {@link Command} and {@link Direction}
+ * for more information.
  */
 public class CommandProcessor implements BiFunction<List<Command>, Position, Position> {
 

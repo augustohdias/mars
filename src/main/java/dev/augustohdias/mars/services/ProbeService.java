@@ -28,7 +28,7 @@ public class ProbeService {
         Direction.get(parameters.getFacingDirection())
             .orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid direction."));
-    Coordinate coordinate = new Coordinate(parameters.getX(), parameters.getY());
+    Coordinate coordinate = new Coordinate(parameters.getProbeX(), parameters.getProbeY());
     return ProbePool.newProbe(new Position(coordinate, direction));
   }
 
@@ -64,9 +64,8 @@ public class ProbeService {
     return probe.applyCommands(commands);
   }
   /**
-   * Search for a probe using the id parameter.
-   * Returns the requested probe, if exists.
-   * Throws an exception otherwise.
+   * Search for a probe using the id parameter. Returns the requested probe, if exists. Throws an
+   * exception otherwise.
    *
    * @throws ResponseStatusException If the requested probe is not found, returns 404.
    * @param id Desired probe's id.

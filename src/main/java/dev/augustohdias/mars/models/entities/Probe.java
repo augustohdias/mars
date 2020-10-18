@@ -14,12 +14,14 @@ import lombok.experimental.Accessors;
 public class Probe {
   private Integer id;
   private Position position;
+  private Coordinate boundaries;
+
   private static final CommandProcessor commandProcessor = new CommandProcessor();
 
   /**
-   * Apply a list of commands on current probe instance.
-   * For more information, see {@link dev.augustohdias.mars.utility.MovementProcessor} and
-   * {@link dev.augustohdias.mars.utility.CommandProcessor}.
+   * Apply a list of commands on current probe instance. For more information, see {@link
+   * dev.augustohdias.mars.utility.MovementProcessor} and {@link
+   * dev.augustohdias.mars.utility.CommandProcessor}.
    *
    * @param commands Commands that will be applied.
    * @return Returns a self reference.

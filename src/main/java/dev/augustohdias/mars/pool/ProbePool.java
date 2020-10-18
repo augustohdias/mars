@@ -19,7 +19,7 @@ public class ProbePool {
    * @return Recently created probe instance.
    */
   public Probe newProbe(Position position) {
-    Probe newProbe = new Probe(probes.size(), position);
+    Probe newProbe = new Probe(probes.size(), position, null);
     probes.add(newProbe);
     return newProbe;
   }
