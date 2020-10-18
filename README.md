@@ -86,7 +86,7 @@ Cria uma sonda e retorna as informações da sonda criada.
 ```
 
 ### Move uma sonda
-`PATCH /mars/v1/probes/0`
+`PATCH /mars/v1/probes/{:id}`
 ```json
 {
     "commands": "MMRMMRMRRM"
