@@ -1,13 +1,17 @@
 package dev.augustohdias.mars.utility;
 
 import dev.augustohdias.mars.models.entities.Command;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public class CommandParser {
+
+  private final Pattern COMMAND_CHECKER = Pattern.compile("\b([LRM ])");
 
   /**
    * Parse a command string to a {@link Command} list.
@@ -17,7 +21,13 @@ public class CommandParser {
    * @param commands A String with commands.
    * @return A list of commands.
    */
-  public List<Command> parseCommands(String commands) {
+  public List<Command> parseCommands(String commands) throws IOException {
+    boolean isValid = COMMAND_CHECKER.matcher(commands).matches();
+
+    if (!isValid) {
+      throw new IOException();
+    }
+
     return commands
         .toUpperCase()
         .chars()

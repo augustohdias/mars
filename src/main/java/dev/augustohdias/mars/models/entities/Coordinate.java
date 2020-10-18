@@ -13,4 +13,12 @@ import lombok.experimental.Accessors;
 public class Coordinate {
   private Integer x;
   private Integer y;
+
+  public boolean isValid() {
+    return x > 0 && y > 0;
+  }
+
+  public boolean inBounds(Coordinate boundaries) {
+    return x <= boundaries.x && y <= boundaries.y;
+  }
 }

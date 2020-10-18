@@ -9,6 +9,7 @@ import dev.augustohdias.mars.models.request.parameters.CreateProbe;
 import dev.augustohdias.mars.models.request.parameters.MoveProbe;
 import dev.augustohdias.mars.pool.ProbePool;
 import dev.augustohdias.mars.utility.CommandParser;
+import java.io.IOException;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -60,8 +61,16 @@ public class ProbeService {
    */
   public Probe moveProbe(Integer id, MoveProbe parameters) {
     Probe probe = findProbe(id);
-    List<Command> commands = CommandParser.parseCommands(parameters.getCommands());
-    return probe.applyCommands(commands);
+    try {
+      List<Command> commands = CommandParser.parseCommands(parameters.getCommands());
+      probe.applyCommands(commands);
+    } catch (IndexOutOfBoundsException exception) {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid command: Out of bounds.");
+    } catch (IOException exception) {
+      throw new ResponseStatusException(
+          HttpStatus.BAD_REQUEST, "Invalid command string. Couldn't parse.");
+    }
+    return probe;
   }
   /**
    * Search for a probe using the id parameter. Returns the requested probe, if exists. Throws an
