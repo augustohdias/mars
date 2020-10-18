@@ -5,6 +5,7 @@ import dev.augustohdias.mars.models.request.parameters.CreateProbe;
 import dev.augustohdias.mars.models.request.parameters.MoveProbe;
 import dev.augustohdias.mars.services.ProbeService;
 import java.util.List;
+import javax.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -22,7 +23,7 @@ public class ProbeController {
   private final ProbeService service;
 
   @PostMapping
-  public Probe createProbe(@RequestBody CreateProbe parameters) {
+  public Probe createProbe(@RequestBody @Valid CreateProbe parameters) {
     return service.createProbe(parameters);
   }
 
@@ -37,7 +38,7 @@ public class ProbeController {
   }
 
   @PatchMapping("{id}")
-  public Probe moveProbe(@PathVariable Integer id, @RequestBody MoveProbe parameters) {
+  public Probe moveProbe(@PathVariable Integer id, @RequestBody @Valid MoveProbe parameters) {
     return service.moveProbe(id, parameters);
   }
 }
