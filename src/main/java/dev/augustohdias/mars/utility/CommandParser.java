@@ -11,7 +11,7 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class CommandParser {
 
-  private final Pattern COMMAND_CHECKER = Pattern.compile("\b([LRM ])");
+  private final Pattern COMMAND_CHECKER = Pattern.compile("^[LRM]+$");
 
   /**
    * Parse a command string to a {@link Command} list.
@@ -22,12 +22,9 @@ public class CommandParser {
    * @return A list of commands.
    */
   public List<Command> parseCommands(String commands) throws IOException {
-    boolean isValid = COMMAND_CHECKER.matcher(commands).matches();
-
-    if (!isValid) {
+    if (!COMMAND_CHECKER.matcher(commands.toUpperCase()).matches()) {
       throw new IOException();
     }
-
     return commands
         .toUpperCase()
         .chars()
