@@ -30,7 +30,8 @@ public class ProbeService {
             .orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid direction."));
     Coordinate coordinate = new Coordinate(parameters.getProbeX(), parameters.getProbeY());
-    return ProbePool.newProbe(new Position(coordinate, direction));
+    Coordinate boundaries = new Coordinate(parameters.getLimitX(), parameters.getLimitY());
+    return ProbePool.newProbe(new Position(coordinate, direction), boundaries);
   }
 
   /**
