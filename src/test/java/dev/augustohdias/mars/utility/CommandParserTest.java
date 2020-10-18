@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 class CommandParserTest {
   @Test
-  void parseCommandTest() {
+  void parseCommandTest() throws Exception {
     List<Command> expectedResult =
         Arrays.asList(
             Command.LEFT,
