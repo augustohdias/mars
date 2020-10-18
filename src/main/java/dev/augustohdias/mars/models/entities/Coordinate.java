@@ -15,7 +15,7 @@ public class Coordinate {
   private Integer y;
 
   public boolean checkIfItsValid() {
-    return x > 0 && y > 0;
+    return x >= 0 && y >= 0;
   }
 
   public boolean inBounds(Coordinate boundaries) {
